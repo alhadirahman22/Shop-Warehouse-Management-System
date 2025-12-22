@@ -9,6 +9,7 @@ import com.example.warehouse_inventory.dto.UpdateItemActiveRequest;
 import com.example.warehouse_inventory.dto.UpdateItemRequest;
 import com.example.warehouse_inventory.response.ApiResponse;
 import com.example.warehouse_inventory.response.ApiStatus;
+import com.example.warehouse_inventory.response.PaginatedResponse;
 import com.example.warehouse_inventory.service.ItemService;
 
 import jakarta.validation.Valid;
@@ -16,11 +17,13 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
 @RestController
@@ -33,6 +36,19 @@ public class ItemController {
         ItemResponse saved = itemService.create(req);
 
         return ResponseEntity.status(ApiStatus.CREATED.httpStatus()).body(ApiResponse.created(saved));
+    }
+
+    @GetMapping("/getList")
+    public ResponseEntity<ApiResponse<PaginatedResponse<ItemResponse>>> getList(
+            @RequestParam(defaultValue = "0") int offset,
+            @RequestParam(defaultValue = "10") int limit,
+            @RequestParam(required = false) String search,
+            @RequestParam(name = "sort_by", defaultValue = "id") String sortBy,
+            @RequestParam(name = "sort_direction", defaultValue = "asc") String sortDirection
+    ) {
+        PaginatedResponse<ItemResponse> result = itemService.getAll(offset, limit, search, sortBy, sortDirection);
+        return ResponseEntity.status(ApiStatus.SUCCESS.httpStatus())
+                .body(ApiResponse.success(result));
     }
 
     @DeleteMapping("/delete/{id}")
