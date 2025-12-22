@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public class HelloService {
 
     public String getGreeting() {
-        return "Hello from Backend!";
+        return "Hello 2 from Backend!";
     }
 }
