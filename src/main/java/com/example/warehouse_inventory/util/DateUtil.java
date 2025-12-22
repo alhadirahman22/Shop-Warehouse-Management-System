@@ -1,4 +1,4 @@
-package com.example.backend.util;
+package com.example.warehouse_inventory.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

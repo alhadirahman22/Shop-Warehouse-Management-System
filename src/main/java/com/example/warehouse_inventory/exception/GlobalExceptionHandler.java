@@ -1,4 +1,4 @@
-package com.example.backend.exception;
+package com.example.warehouse_inventory.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

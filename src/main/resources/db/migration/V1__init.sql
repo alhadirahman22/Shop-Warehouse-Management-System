@@ -1,0 +1,61 @@
+CREATE TABLE IF NOT EXISTS items (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(150) NOT NULL,
+  description TEXT,
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS variants (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  item_id BIGINT NOT NULL,
+  sku VARCHAR(64) NOT NULL UNIQUE,
+  variant_name VARCHAR(120) NOT NULL,
+  attributes JSON NULL,
+  price DECIMAL(12,2) NOT NULL,
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_variants_item FOREIGN KEY (item_id) REFERENCES items(id)
+);
+
+CREATE INDEX idx_variants_item_id ON variants(item_id);
+
+CREATE TABLE IF NOT EXISTS stock (
+  variant_id BIGINT PRIMARY KEY,
+  quantity INT NOT NULL DEFAULT 0,
+  updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_stock_variant FOREIGN KEY (variant_id) REFERENCES variants(id),
+  CONSTRAINT chk_stock_nonneg CHECK (quantity >= 0)
+);
+
+CREATE TABLE IF NOT EXISTS stock_movements (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  variant_id BIGINT NOT NULL,
+  change_qty INT NOT NULL,
+  movement_type ENUM('IN','OUT','ADJUST') NOT NULL,
+  reference_id VARCHAR(64),
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_stock_movements_variant FOREIGN KEY (variant_id) REFERENCES variants(id)
+);
+
+CREATE INDEX idx_stock_movements_variant_id ON stock_movements(variant_id);
+
+CREATE TABLE IF NOT EXISTS orders (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  order_no VARCHAR(64) NOT NULL UNIQUE,
+  status ENUM('NEW','PAID','CANCELLED') NOT NULL,
+  total_amount DECIMAL(12,2) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS order_items (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  order_id BIGINT NOT NULL,
+  variant_id BIGINT NOT NULL,
+  quantity INT NOT NULL,
+  price_at_purchase DECIMAL(12,2) NOT NULL,
+  CONSTRAINT fk_order_items_order FOREIGN KEY (order_id) REFERENCES orders(id),
+  CONSTRAINT fk_order_items_variant FOREIGN KEY (variant_id) REFERENCES variants(id)
+);

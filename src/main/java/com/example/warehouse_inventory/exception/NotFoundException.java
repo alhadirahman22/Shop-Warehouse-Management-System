@@ -1,4 +1,4 @@
-package com.example.backend.exception;
+package com.example.warehouse_inventory.exception;
 
 public class NotFoundException extends RuntimeException {
 
