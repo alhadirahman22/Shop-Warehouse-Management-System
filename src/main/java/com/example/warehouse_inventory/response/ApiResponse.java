@@ -17,6 +17,10 @@ public record ApiResponse<T>(
         return new ApiResponse<>(status.code(), message, data, errors, Instant.now());
     }
 
+    public static ApiResponse<Void> error(ApiStatus status, Object errors) {
+        return of(status, null, errors);
+    }
+
     public static <T> ApiResponse<T> success(T data) {
         return of(ApiStatus.SUCCESS, data, null);
     }
