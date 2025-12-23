@@ -72,7 +72,7 @@ public class ItemService {
         if (!itemRepository.existsById(id)) {
             throw new NotFoundException("Item not found");
         }
-        if (itemRepository.existsVariantByItemId(id)) {
+        if (itemRepository.existsVariantByItemId(id) > 0) {
             throw new DataAlreadyExistsException("Item has variants");
         }
         itemRepository.deleteById(id);

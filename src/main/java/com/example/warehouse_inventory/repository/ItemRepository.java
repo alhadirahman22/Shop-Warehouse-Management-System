@@ -14,7 +14,7 @@ public interface ItemRepository extends JpaRepository<Item, Long>, JpaSpecificat
     boolean existsByNameIgnoreCaseAndIdNot(String name, Long id);
 
     @Query(value = "SELECT EXISTS(SELECT 1 FROM variants WHERE item_id = :itemId)", nativeQuery = true)
-    boolean existsVariantByItemId(@Param("itemId") Long itemId);
+    long existsVariantByItemId(@Param("itemId") Long itemId);
 
     Page<Item> findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(
             String name,
