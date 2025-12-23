@@ -43,6 +43,7 @@ import lombok.RequiredArgsConstructor;
 public class VariantService {
     private final VariantRepository variantRepository;
     private final ItemRepository itemRepository;
+    private final StockService stockService;
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     private static final Map<String, String> FIELD_MAP = Map.ofEntries(
             Map.entry("id", "id"),
@@ -74,6 +75,7 @@ public class VariantService {
         }
 
         Variant saved = variantRepository.save(variant);
+        stockService.createForVariant(saved.getId());
         return VariantMapper.toResponse(saved);
     }
 
@@ -137,7 +139,8 @@ public class VariantService {
         if (!variantRepository.existsById(id)) {
             throw new NotFoundException("Variant not found");
         }
-        if (variantRepository.existsStockByVariantId(id) > 0) {
+        int quantity = stockService.getQuantityOrZero(id);
+        if (quantity > 0) {
             throw new DataAlreadyExistsException("Variant has stock");
         }
         if (variantRepository.existsStockMovementByVariantId(id) > 0) {
@@ -146,6 +149,7 @@ public class VariantService {
         if (variantRepository.existsOrderItemByVariantId(id) > 0) {
             throw new DataAlreadyExistsException("Variant has order items");
         }
+        stockService.deleteByVariantId(id);
         variantRepository.deleteById(id);
     }
 
