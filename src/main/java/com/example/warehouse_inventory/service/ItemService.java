@@ -2,10 +2,12 @@ package com.example.warehouse_inventory.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.warehouse_inventory.dto.CreateItemRequest;
+import com.example.warehouse_inventory.dto.FilterRequest;
 import com.example.warehouse_inventory.dto.ItemResponse;
 import com.example.warehouse_inventory.dto.UpdateItemRequest;
 import com.example.warehouse_inventory.entity.Item;
@@ -15,9 +17,18 @@ import com.example.warehouse_inventory.mapper.ItemMapper;
 import com.example.warehouse_inventory.repository.ItemRepository;
 import com.example.warehouse_inventory.response.PaginatedResponse;
 import com.example.warehouse_inventory.response.PaginationMeta;
+import com.example.warehouse_inventory.util.FilterFieldResolver;
+import com.example.warehouse_inventory.util.FilterPredicateBuilder;
+import com.example.warehouse_inventory.util.FilterValueParser;
 import com.example.warehouse_inventory.util.OffsetBasedPageRequest;
 
+import jakarta.persistence.criteria.Predicate;
+
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import lombok.RequiredArgsConstructor;
 
@@ -29,6 +40,17 @@ public class ItemService {
     // public ItemService(ItemRepository itemRepository) {
     // this.itemRepository = itemRepository;
     // }
+
+    private static final Map<String, String> FIELD_MAP = Map.of(
+            "id", "id",
+            "name", "name",
+            "description", "description",
+            "active", "active",
+            "createdat", "createdAt",
+            "created_at", "createdAt",
+            "updatedat", "updatedAt",
+            "updated_at", "updatedAt");
+    private static final Set<String> STRING_FIELDS = Set.of("name", "description");
 
     @Transactional
     public ItemResponse create(CreateItemRequest req) {
@@ -88,7 +110,8 @@ public class ItemService {
             int limit,
             String search,
             String sortBy,
-            String sortDirection) {
+            String sortDirection,
+            List<FilterRequest> filters) {
         String sortField = (sortBy == null || sortBy.isBlank()) ? "id" : sortBy;
         String safeSort = switch (sortField) {
             case "id", "name", "description", "active", "createdAt", "updatedAt" -> sortField;
@@ -98,15 +121,18 @@ public class ItemService {
         Sort sort = Sort.by(direction, safeSort);
 
         OffsetBasedPageRequest pageable = new OffsetBasedPageRequest(offset, limit, sort);
-        Page<Item> page;
-        if (search == null || search.isBlank()) {
-            page = itemRepository.findAll(pageable);
-        } else {
-            page = itemRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(
-                    search,
-                    search,
-                    pageable);
+        Specification<Item> spec = (root, query, cb) -> cb.conjunction();
+        if (search != null && !search.isBlank()) {
+            String lowerPattern = "%" + search.toLowerCase() + "%";
+            String rawPattern = "%" + search + "%";
+            spec = spec.and((root, query, cb) -> cb.or(
+                    // cb.like(cb.lower(root.get("name")), lowerPattern)
+                    // // cb.like(cb.lower(root.get("description")), pattern)));
+                    // cb.like(root.get("description"), rawPattern)));
+                    cb.like(cb.lower(root.get("name")), lowerPattern)));
         }
+        spec = spec.and(buildFilterSpec(filters));
+        Page<Item> page = itemRepository.findAll(spec, pageable);
 
         List<ItemResponse> items = page.getContent().stream()
                 .map(ItemMapper::toResponse)
@@ -132,5 +158,99 @@ public class ItemService {
     public ItemResponse findById(Long id) {
         Item result = itemRepository.findById(id).orElseThrow(() -> new NotFoundException("Item not found"));
         return ItemMapper.toResponse(result);
+    }
+
+    private Specification<Item> buildFilterSpec(List<FilterRequest> filters) {
+        if (filters == null || filters.isEmpty()) {
+            return (root, query, cb) -> cb.conjunction();
+        }
+        return (root, query, cb) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            for (FilterRequest filter : filters) {
+                if (filter == null || filter.field() == null) {
+                    continue;
+                }
+                String field = FilterFieldResolver.resolve(FIELD_MAP, filter.field());
+                if (field == null) {
+                    continue;
+                }
+                String operator = (filter.operator() == null || filter.operator().isBlank())
+                        ? "="
+                        : filter.operator().trim().toLowerCase();
+                String rawValue = filter.value();
+                if (rawValue == null || rawValue.isBlank()) {
+                    continue;
+                }
+
+                switch (operator) {
+                    case "=" -> {
+                        Object value = convertValue(field, rawValue);
+                        if (value != null) {
+                            predicates.add(cb.equal(root.get(field), value));
+                        }
+                    }
+                    case "!=" -> {
+                        Object value = convertValue(field, rawValue);
+                        if (value != null) {
+                            predicates.add(cb.notEqual(root.get(field), value));
+                        }
+                    }
+                    case ">", "<", ">=", "<=" -> FilterPredicateBuilder.addComparablePredicate(
+                            predicates,
+                            root.get(field),
+                            operator,
+                            rawValue,
+                            cb,
+                            value -> convertValue(field, value));
+                    case "contains" -> {
+                        if (STRING_FIELDS.contains(field)) {
+                            String pattern = "%" + rawValue.toLowerCase() + "%";
+                            predicates.add(cb.like(cb.lower(root.get(field)), pattern));
+                        }
+                    }
+                    case "in" -> {
+                        List<Object> values = FilterValueParser.parseValues(
+                                rawValue,
+                                value -> convertValue(field, value));
+                        if (!values.isEmpty()) {
+                            predicates.add(root.get(field).in(values));
+                        }
+                    }
+                    case "between" -> {
+                        List<Object> values = FilterValueParser.parseValues(
+                                rawValue,
+                                value -> convertValue(field, value));
+                        if (values.size() == 2
+                                && values.get(0) instanceof Comparable
+                                && values.get(1) instanceof Comparable) {
+                            predicates.add(cb.between(
+                                    root.get(field).as(Comparable.class),
+                                    (Comparable) values.get(0),
+                                    (Comparable) values.get(1)));
+                        }
+                    }
+                    default -> {
+                    }
+                }
+            }
+            return predicates.isEmpty() ? cb.conjunction() : cb.and(predicates.toArray(new Predicate[0]));
+        };
+    }
+
+    private Object convertValue(String field, String rawValue) {
+        String trimmed = rawValue.trim();
+        if (trimmed.isEmpty()) {
+            return null;
+        }
+        try {
+            return switch (field) {
+                case "id" -> Long.parseLong(trimmed);
+                case "active" -> FilterValueParser.parseBoolean(trimmed);
+                case "createdAt", "updatedAt" -> Instant.parse(trimmed);
+                default -> trimmed;
+            };
+        } catch (RuntimeException ex) {
+            return null;
+        }
     }
 }

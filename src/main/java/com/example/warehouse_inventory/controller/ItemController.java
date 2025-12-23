@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.warehouse_inventory.dto.CreateItemRequest;
+import com.example.warehouse_inventory.dto.FilterRequest;
 import com.example.warehouse_inventory.dto.ItemResponse;
 import com.example.warehouse_inventory.dto.UpdateItemActiveRequest;
 import com.example.warehouse_inventory.dto.UpdateItemRequest;
@@ -11,6 +12,7 @@ import com.example.warehouse_inventory.response.ApiResponse;
 import com.example.warehouse_inventory.response.ApiStatus;
 import com.example.warehouse_inventory.response.PaginatedResponse;
 import com.example.warehouse_inventory.service.ItemService;
+import com.example.warehouse_inventory.util.FilterParamParser;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+import java.util.Map;
+
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequiredArgsConstructor
 @RestController
@@ -44,8 +51,11 @@ public class ItemController {
             @RequestParam(defaultValue = "10") int limit,
             @RequestParam(required = false) String search,
             @RequestParam(name = "sort_by", defaultValue = "id") String sortBy,
-            @RequestParam(name = "sort_direction", defaultValue = "asc") String sortDirection) {
-        PaginatedResponse<ItemResponse> result = itemService.getAll(offset, limit, search, sortBy, sortDirection);
+            @RequestParam(name = "sort_direction", defaultValue = "asc") String sortDirection,
+            @Parameter(example = "{\"filters[0][field]\":\"active\",\"filters[0][operator]\":\"=\",\"filters[0][value]\":\"false\",\"filters[1][field]\":\"name\",\"filters[1][operator]\":\"!=\",\"filters[1][value]\":\"string\"}") @RequestParam(required = true) Map<String, String> params) {
+        List<FilterRequest> filters = FilterParamParser.parse(params);
+        PaginatedResponse<ItemResponse> result = itemService.getAll(offset, limit, search, sortBy, sortDirection,
+                filters);
         return ResponseEntity.status(ApiStatus.SUCCESS.httpStatus())
                 .body(ApiResponse.success(result));
     }
@@ -81,5 +91,4 @@ public class ItemController {
         ItemResponse result = itemService.findById(id);
         return ResponseEntity.status(ApiStatus.SUCCESS.httpStatus()).body(ApiResponse.success(result));
     }
-
 }
