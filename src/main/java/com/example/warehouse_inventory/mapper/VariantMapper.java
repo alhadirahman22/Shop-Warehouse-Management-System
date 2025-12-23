@@ -34,7 +34,7 @@ public class VariantMapper {
                 variant.getActive());
     }
 
-    private static JsonNode parseAttributes(String attributes) {
+    public static JsonNode parseAttributes(String attributes) {
         if (attributes == null || attributes.isBlank()) {
             return NullNode.getInstance();
         }

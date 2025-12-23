@@ -37,10 +37,6 @@ import lombok.RequiredArgsConstructor;
 public class ItemService {
     private final ItemRepository itemRepository;
 
-    // public ItemService(ItemRepository itemRepository) {
-    // this.itemRepository = itemRepository;
-    // }
-
     private static final Map<String, String> FIELD_MAP = Map.of(
             "id", "id",
             "name", "name",

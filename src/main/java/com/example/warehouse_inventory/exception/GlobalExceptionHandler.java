@@ -65,11 +65,3 @@ public class GlobalExceptionHandler {
                 .body(ApiResponse.withMessage(ApiStatus.DATA_ALREADY_EXISTS, ex.getMessage(), null, null));
     }
 }
-
-// how to use
-// import com.example.warehouse_inventory.exception.NotFoundException;
-// @GetMapping("/{id}")
-// public ResponseEntity<ApiResponse<String>> get(@PathVariable String id) {
-// // misal tidak ketemu
-// throw new NotFoundException("Item not found");
-// }

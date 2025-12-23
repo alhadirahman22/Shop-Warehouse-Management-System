@@ -30,20 +30,3 @@ public record ApiResponse<T>(
     }
 
 }
-
-// how to use
-// @GetMapping("/{id}")
-// public ResponseEntity<ApiResponse<UserDto>> getUser(@PathVariable Long id) {
-// UserDto user = service.getUser(id);
-// return ResponseEntity.status(ApiStatus.SUCCESS.httpStatus())
-// .body(ApiResponse.success(user));
-// }
-
-// @PostMapping
-// public ResponseEntity<ApiResponse<UserDto>> createUser(@RequestBody @Valid
-// CreateUserRequest req) {
-// UserDto created = service.create(req);
-// URI location = URI.create("/users/" + created.id());
-// return ResponseEntity.created(location)
-// .body(ApiResponse.created(created));
-// }
