@@ -10,3 +10,8 @@ spring:
     show-sql: true
 server:
   port: 8012
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
