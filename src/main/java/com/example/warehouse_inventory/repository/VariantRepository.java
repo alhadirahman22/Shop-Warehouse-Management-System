@@ -16,6 +16,10 @@ public interface VariantRepository extends JpaRepository<Variant, Long>, JpaSpec
 
     boolean existsBySkuIgnoreCaseAndIdNot(String sku, Long id);
 
+    boolean existsByVariantNameIgnoreCase(String variantName);
+
+    boolean existsByVariantNameIgnoreCaseAndIdNot(String variantName, Long id);
+
     Optional<Variant> findBySkuIgnoreCase(String sku);
 
     @Query(value = "SELECT EXISTS(SELECT 1 FROM stock WHERE variant_id = :variantId)", nativeQuery = true)

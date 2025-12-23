@@ -63,6 +63,9 @@ public class VariantService {
 
     @Transactional
     public VariantResponse create(CreateVariantRequest req) {
+        if (variantRepository.existsByVariantNameIgnoreCase(req.variantName())) {
+            throw new DataAlreadyExistsException("Variant name already exists");
+        }
         if (!itemRepository.existsById(req.itemId())) {
             throw new NotFoundException("Item not found");
         }
@@ -157,6 +160,10 @@ public class VariantService {
     public VariantResponse update(Long id, UpdateVariantRequest req) {
         Variant variant = variantRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Variant not found"));
+
+        if (variantRepository.existsByVariantNameIgnoreCaseAndIdNot(req.variantName(), id)) {
+            throw new DataAlreadyExistsException("Variant name already exists");
+        }
 
         variant.setVariantName(req.variantName());
         variant.setAttributes(sanitizeAttributes(req.attributes()));
