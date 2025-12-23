@@ -32,6 +32,21 @@ public class StockService {
     }
 
     @Transactional
+    public int applyChange(Long variantId, int changeQty) {
+        Stock stock = stockRepository.findById(variantId)
+                .orElseGet(() -> {
+                    Stock created = new Stock();
+                    created.setVariantId(variantId);
+                    created.setQuantity(0);
+                    return created;
+                });
+        int updatedQuantity = stock.getQuantity() + changeQty;
+        stock.setQuantity(updatedQuantity);
+        stockRepository.save(stock);
+        return updatedQuantity;
+    }
+
+    @Transactional
     public void deleteByVariantId(Long variantId) {
         if (stockRepository.existsById(variantId)) {
             stockRepository.deleteById(variantId);
