@@ -42,7 +42,7 @@ docker compose -f docker-compose.dev.yml up -d --build
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `DB_URL` | `jdbc:mysql://database:13306/warehouse_inventory` | Database connection URL |
+| `DB_URL` | `jdbc:mysql://database:3306/warehouse_inventory` | Database connection URL |
 | `DB_USERNAME` | `sqluser` | Database user |
 | `DB_PASSWORD` | `123sqly6` | Database password |
 | `SERVER_PORT` | `8012` | Application port |
