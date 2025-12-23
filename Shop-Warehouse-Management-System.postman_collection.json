@@ -1,0 +1,2220 @@
+{
+	"info": {
+		"_postman_id": "eb5c2452-b06f-44a1-8901-f617ed4cacd9",
+		"name": "Shop-Warehouse-Management-System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22385763"
+	},
+	"item": [
+		{
+			"name": "variant",
+			"item": [
+				{
+					"name": "update",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"active\": false,\n  \"price\": 2589.3346396227626,\n  \"variantName\": \"string\",\n  \"attributes\": \"{\\\"size\\\":\\\"L\\\",\\\"color\\\":\\\"red\\\"}\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/variant/update/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"variant",
+												"update",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1999"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"active\": false,\n  \"price\": 2589.3346396227626,\n  \"variantName\": \"string\",\n  \"attributes\": \"{\\\"size\\\":\\\"L\\\",\\\"color\\\":\\\"red\\\"}\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/variant/update/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"variant",
+														"update",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1999"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 1703,\n    \"itemId\": 1937,\n    \"sku\": \"string\",\n    \"variantName\": \"string\",\n    \"attributes\": {},\n    \"price\": 106.11055838226191,\n    \"active\": true\n  },\n  \"errors\": {},\n  \"timestamp\": \"1992-03-01T04:12:31.335Z\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "create",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"itemId\": 1686,\n  \"price\": 3233.2498894102237,\n  \"variantName\": \"string\",\n  \"attributes\": \"{\\\"size\\\":\\\"L\\\",\\\"color\\\":\\\"red\\\"}\",\n  \"active\": false\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/variant/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"variant",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"itemId\": 1686,\n  \"price\": 3233.2498894102237,\n  \"variantName\": \"string\",\n  \"attributes\": \"{\\\"size\\\":\\\"L\\\",\\\"color\\\":\\\"red\\\"}\",\n  \"active\": false\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/variant/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"variant",
+												"create"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 1703,\n    \"itemId\": 1937,\n    \"sku\": \"string\",\n    \"variantName\": \"string\",\n    \"attributes\": {},\n    \"price\": 106.11055838226191,\n    \"active\": true\n  },\n  \"errors\": {},\n  \"timestamp\": \"1992-03-01T04:12:31.335Z\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "update-active",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "update Active",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"active\": true\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/variant/update-active/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"variant",
+												"update-active",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1999"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"active\": true\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/variant/update-active/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"variant",
+														"update-active",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1999"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 1703,\n    \"itemId\": 1937,\n    \"sku\": \"string\",\n    \"variantName\": \"string\",\n    \"attributes\": {},\n    \"price\": 106.11055838226191,\n    \"active\": true\n  },\n  \"errors\": {},\n  \"timestamp\": \"1992-03-01T04:12:31.335Z\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "find By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/variant/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"variant",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1999"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/variant/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"variant",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1999"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 1703,\n    \"itemId\": 1937,\n    \"sku\": \"string\",\n    \"variantName\": \"string\",\n    \"attributes\": {},\n    \"price\": 106.11055838226191,\n    \"active\": true\n  },\n  \"errors\": {},\n  \"timestamp\": \"1992-03-01T04:12:31.335Z\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "sku",
+					"item": [
+						{
+							"name": "{sku}",
+							"item": [
+								{
+									"name": "find By Sku",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/variant/sku/:sku",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"variant",
+												"sku",
+												":sku"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "string"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/variant/sku/:sku",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"variant",
+														"sku",
+														":sku"
+													],
+													"variable": [
+														{
+															"key": "sku",
+															"value": "string"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 1703,\n    \"itemId\": 1937,\n    \"sku\": \"string\",\n    \"variantName\": \"string\",\n    \"attributes\": {},\n    \"price\": 106.11055838226191,\n    \"active\": true\n  },\n  \"errors\": {},\n  \"timestamp\": \"1992-03-01T04:12:31.335Z\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "getList",
+					"item": [
+						{
+							"name": "get List",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/variant/getList?offset=0&limit=10&sort_by=id&sort_direction=asc",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"variant",
+										"getList"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "string",
+											"disabled": true
+										},
+										{
+											"key": "sort_by",
+											"value": "id"
+										},
+										{
+											"key": "sort_direction",
+											"value": "asc"
+										},
+										{
+											"key": "filters[0][field]",
+											"value": "attributes",
+											"disabled": true
+										},
+										{
+											"key": "filters[0][operator]",
+											"value": "=",
+											"disabled": true
+										},
+										{
+											"key": "filters[0][value]",
+											"value": "{\"brand\":\"Belden\",\"length\":\"10m\"}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/variant/getList?offset=0&limit=10&search=string&sort_by=id&sort_direction=asc&filters[0][field]=attributes&filters[0][operator]==&filters[0][value]={\"brand\":\"Belden\",\"length\":\"10m\"}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"variant",
+												"getList"
+											],
+											"query": [
+												{
+													"key": "offset",
+													"value": "0"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "search",
+													"value": "string"
+												},
+												{
+													"key": "sort_by",
+													"value": "id"
+												},
+												{
+													"key": "sort_direction",
+													"value": "asc"
+												},
+												{
+													"key": "filters[0][field]",
+													"value": "attributes"
+												},
+												{
+													"key": "filters[0][operator]",
+													"value": "="
+												},
+												{
+													"key": "filters[0][value]",
+													"value": "{\"brand\":\"Belden\",\"length\":\"10m\"}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"data\": [\n      {\n        \"id\": 4581,\n        \"itemId\": 2876,\n        \"sku\": \"string\",\n        \"variantName\": \"string\",\n        \"attributes\": {},\n        \"price\": 7088.630369072386,\n        \"active\": true\n      },\n      {\n        \"id\": 9042,\n        \"itemId\": 3405,\n        \"sku\": \"string\",\n        \"variantName\": \"string\",\n        \"attributes\": {},\n        \"price\": 9655.396012822532,\n        \"active\": true\n      }\n    ],\n    \"pagination\": {\n      \"offset\": 2132,\n      \"limit\": 6664,\n      \"total\": 9171,\n      \"has_next\": true,\n      \"has_previous\": true,\n      \"current_offset\": 9974,\n      \"showing_from\": 8003,\n      \"showing_to\": 7251\n    }\n  },\n  \"errors\": {},\n  \"timestamp\": \"1959-12-21T02:05:31.181Z\"\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.request.url.query.each(q => {",
+									"  q.key = encodeURIComponent(q.key);",
+									"  if (q.value !== undefined && q.value !== null) {",
+									"    q.value = encodeURIComponent(q.value);",
+									"  }",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "delete",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/variant/delete/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"variant",
+												"delete",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1999"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/variant/delete/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"variant",
+														"delete",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1999"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {},\n  \"errors\": {},\n  \"timestamp\": \"1992-01-29T02:10:35.724Z\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "items",
+			"item": [
+				{
+					"name": "update",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "update 1",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"active\": true,\n  \"name\": \"string\",\n  \"description\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/items/update/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												"update",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1999"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"active\": true,\n  \"name\": \"string\",\n  \"description\": \"string\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/items/update/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"items",
+														"update",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1999"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 5661,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"active\": true\n  },\n  \"errors\": {},\n  \"timestamp\": \"1956-06-19T14:38:51.652Z\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "create",
+					"item": [
+						{
+							"name": "create 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": false\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/items/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"items",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"active\": false\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/items/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												"create"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 5661,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"active\": true\n  },\n  \"errors\": {},\n  \"timestamp\": \"1956-06-19T14:38:51.652Z\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "update-active",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "update Active 1",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"active\": true\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/items/update-active/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												"update-active",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1999"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"active\": true\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/items/update-active/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"items",
+														"update-active",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1999"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 5661,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"active\": true\n  },\n  \"errors\": {},\n  \"timestamp\": \"1956-06-19T14:38:51.652Z\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "find By Id 1",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/items/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"items",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1999"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/items/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1999"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 5661,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"active\": true\n  },\n  \"errors\": {},\n  \"timestamp\": \"1956-06-19T14:38:51.652Z\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "getList",
+					"item": [
+						{
+							"name": "get List 3",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.request.url.query.each(q => {\r",
+											"  q.key = encodeURIComponent(q.key);\r",
+											"  if (q.value !== undefined && q.value !== null) {\r",
+											"    q.value = encodeURIComponent(q.value);\r",
+											"  }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/items/getList?offset=0&limit=10&sort_by=id&sort_direction=asc&filters[0][field]=active&filters[0][operator]==&filters[0][value]=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"items",
+										"getList"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "string",
+											"disabled": true
+										},
+										{
+											"key": "sort_by",
+											"value": "id"
+										},
+										{
+											"key": "sort_direction",
+											"value": "asc"
+										},
+										{
+											"key": "filters[0][field]",
+											"value": "active"
+										},
+										{
+											"key": "filters[0][operator]",
+											"value": "="
+										},
+										{
+											"key": "filters[0][value]",
+											"value": "false"
+										},
+										{
+											"key": "filters[1][field]",
+											"value": "name",
+											"disabled": true
+										},
+										{
+											"key": "filters[1][operator]",
+											"value": "!=",
+											"disabled": true
+										},
+										{
+											"key": "filters[1][value]",
+											"value": "string",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/items/getList?offset=0&limit=10&search=string&sort_by=id&sort_direction=asc&filters[0][field]=active&filters[0][operator]==&filters[0][value]=false&filters[1][field]=name&filters[1][operator]=!=&filters[1][value]=string",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												"getList"
+											],
+											"query": [
+												{
+													"key": "offset",
+													"value": "0"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "search",
+													"value": "string"
+												},
+												{
+													"key": "sort_by",
+													"value": "id"
+												},
+												{
+													"key": "sort_direction",
+													"value": "asc"
+												},
+												{
+													"key": "filters[0][field]",
+													"value": "active"
+												},
+												{
+													"key": "filters[0][operator]",
+													"value": "="
+												},
+												{
+													"key": "filters[0][value]",
+													"value": "false"
+												},
+												{
+													"key": "filters[1][field]",
+													"value": "name"
+												},
+												{
+													"key": "filters[1][operator]",
+													"value": "!="
+												},
+												{
+													"key": "filters[1][value]",
+													"value": "string"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"data\": [\n      {\n        \"id\": 8340,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"active\": false\n      },\n      {\n        \"id\": 5061,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"active\": false\n      }\n    ],\n    \"pagination\": {\n      \"offset\": 9509,\n      \"limit\": 9625,\n      \"total\": 2455,\n      \"has_next\": true,\n      \"has_previous\": false,\n      \"current_offset\": 6657,\n      \"showing_from\": 1495,\n      \"showing_to\": 6664\n    }\n  },\n  \"errors\": {},\n  \"timestamp\": \"2025-05-02T14:15:44.719Z\"\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.request.url.query.each(q => {",
+									"  q.key = encodeURIComponent(q.key);",
+									"  if (q.value !== undefined && q.value !== null) {",
+									"    q.value = encodeURIComponent(q.value);",
+									"  }",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "delete 1",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/items/delete/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												"delete",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1999"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/items/delete/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"items",
+														"delete",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1999"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {},\n  \"errors\": {},\n  \"timestamp\": \"1992-01-29T02:10:35.724Z\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "create",
+					"item": [
+						{
+							"name": "create 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"items\": [\n    {\n      \"quantity\": 8021,\n      \"variantId\": 3380\n    },\n    {\n      \"quantity\": 7703,\n      \"variantId\": 232\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"items\": [\n    {\n      \"quantity\": 8021,\n      \"variantId\": 3380\n    },\n    {\n      \"quantity\": 7703,\n      \"variantId\": 232\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/orders/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"create"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 2261,\n    \"orderNo\": \"string\",\n    \"status\": \"PAID\",\n    \"totalAmount\": 8993.603717291942,\n    \"createdAt\": \"1998-11-21T19:46:32.598Z\",\n    \"items\": [\n      {\n        \"id\": 7420,\n        \"variantId\": 3185,\n        \"sku\": \"string\",\n        \"quantity\": 4001,\n        \"priceAtPurchase\": 9134.174118400491\n      },\n      {\n        \"id\": 7929,\n        \"variantId\": 2244,\n        \"sku\": \"string\",\n        \"quantity\": 6301,\n        \"priceAtPurchase\": 5578.720667540564\n      }\n    ]\n  },\n  \"errors\": {},\n  \"timestamp\": \"1973-10-04T04:45:59.695Z\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "pay",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "mark Paid",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/pay/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"pay",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1999"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/orders/pay/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"orders",
+														"pay",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1999"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 2261,\n    \"orderNo\": \"string\",\n    \"status\": \"PAID\",\n    \"totalAmount\": 8993.603717291942,\n    \"createdAt\": \"1998-11-21T19:46:32.598Z\",\n    \"items\": [\n      {\n        \"id\": 7420,\n        \"variantId\": 3185,\n        \"sku\": \"string\",\n        \"quantity\": 4001,\n        \"priceAtPurchase\": 9134.174118400491\n      },\n      {\n        \"id\": 7929,\n        \"variantId\": 2244,\n        \"sku\": \"string\",\n        \"quantity\": 6301,\n        \"priceAtPurchase\": 5578.720667540564\n      }\n    ]\n  },\n  \"errors\": {},\n  \"timestamp\": \"1973-10-04T04:45:59.695Z\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "cancel",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "cancel",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/cancel/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"cancel",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1999"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/orders/cancel/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"orders",
+														"cancel",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1999"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 2261,\n    \"orderNo\": \"string\",\n    \"status\": \"PAID\",\n    \"totalAmount\": 8993.603717291942,\n    \"createdAt\": \"1998-11-21T19:46:32.598Z\",\n    \"items\": [\n      {\n        \"id\": 7420,\n        \"variantId\": 3185,\n        \"sku\": \"string\",\n        \"quantity\": 4001,\n        \"priceAtPurchase\": 9134.174118400491\n      },\n      {\n        \"id\": 7929,\n        \"variantId\": 2244,\n        \"sku\": \"string\",\n        \"quantity\": 6301,\n        \"priceAtPurchase\": 5578.720667540564\n      }\n    ]\n  },\n  \"errors\": {},\n  \"timestamp\": \"1973-10-04T04:45:59.695Z\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "inventory",
+			"item": [
+				{
+					"name": "out",
+					"item": [
+						{
+							"name": "stock Out",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"quantity\": 4603,\n  \"variantId\": 9044,\n  \"referenceId\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inventory/out",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory",
+										"out"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"quantity\": 4603,\n  \"variantId\": 9044,\n  \"referenceId\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/inventory/out",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory",
+												"out"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 697,\n    \"variantId\": 4497,\n    \"changeQty\": 3605,\n    \"movementType\": \"OUT\",\n    \"referenceId\": \"string\",\n    \"createdAt\": \"1990-05-05T16:02:56.578Z\"\n  },\n  \"errors\": {},\n  \"timestamp\": \"1954-02-07T22:37:07.691Z\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "in",
+					"item": [
+						{
+							"name": "stock In",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"quantity\": 4603,\n  \"variantId\": 9044,\n  \"referenceId\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inventory/in",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory",
+										"in"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"quantity\": 4603,\n  \"variantId\": 9044,\n  \"referenceId\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/inventory/in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory",
+												"in"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 697,\n    \"variantId\": 4497,\n    \"changeQty\": 3605,\n    \"movementType\": \"OUT\",\n    \"referenceId\": \"string\",\n    \"createdAt\": \"1990-05-05T16:02:56.578Z\"\n  },\n  \"errors\": {},\n  \"timestamp\": \"1954-02-07T22:37:07.691Z\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "adjust",
+					"item": [
+						{
+							"name": "stock Adjust",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"changeQty\": 7635,\n  \"variantId\": 6595,\n  \"referenceId\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inventory/adjust",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory",
+										"adjust"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"changeQty\": 7635,\n  \"variantId\": 6595,\n  \"referenceId\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/inventory/adjust",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inventory",
+												"adjust"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 697,\n    \"variantId\": 4497,\n    \"changeQty\": 3605,\n    \"movementType\": \"OUT\",\n    \"referenceId\": \"string\",\n    \"createdAt\": \"1990-05-05T16:02:56.578Z\"\n  },\n  \"errors\": {},\n  \"timestamp\": \"1954-02-07T22:37:07.691Z\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "stock",
+			"item": [
+				{
+					"name": "getList",
+					"item": [
+						{
+							"name": "get List 1",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/stock/getList?offset=0&limit=10&sort_by=id&sort_direction=asc",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"getList"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "string",
+											"disabled": true
+										},
+										{
+											"key": "sort_by",
+											"value": "id"
+										},
+										{
+											"key": "sort_direction",
+											"value": "asc"
+										},
+										{
+											"key": "filters[0][field]",
+											"value": "sku",
+											"disabled": true
+										},
+										{
+											"key": "filters[0][operator]",
+											"value": "=",
+											"disabled": true
+										},
+										{
+											"key": "filters[0][value]",
+											"value": "SKU-123",
+											"disabled": true
+										},
+										{
+											"key": "filters[1][field]",
+											"value": "variant_id",
+											"disabled": true
+										},
+										{
+											"key": "filters[1][operator]",
+											"value": "=",
+											"disabled": true
+										},
+										{
+											"key": "filters[1][value]",
+											"value": "10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/stock/getList?offset=0&limit=10&search=string&sort_by=id&sort_direction=asc&filters[0][field]=sku&filters[0][operator]==&filters[0][value]=SKU-123&filters[1][field]=variant_id&filters[1][operator]==&filters[1][value]=10",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"stock",
+												"getList"
+											],
+											"query": [
+												{
+													"key": "offset",
+													"value": "0"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "search",
+													"value": "string"
+												},
+												{
+													"key": "sort_by",
+													"value": "id"
+												},
+												{
+													"key": "sort_direction",
+													"value": "asc"
+												},
+												{
+													"key": "filters[0][field]",
+													"value": "sku"
+												},
+												{
+													"key": "filters[0][operator]",
+													"value": "="
+												},
+												{
+													"key": "filters[0][value]",
+													"value": "SKU-123"
+												},
+												{
+													"key": "filters[1][field]",
+													"value": "variant_id"
+												},
+												{
+													"key": "filters[1][operator]",
+													"value": "="
+												},
+												{
+													"key": "filters[1][value]",
+													"value": "10"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"data\": [\n      {\n        \"variantId\": 1408,\n        \"sku\": \"string\",\n        \"quantity\": 8412,\n        \"updatedAt\": \"1980-12-15T03:00:02.179Z\",\n        \"price\": \"string\",\n        \"attributes\": {},\n        \"variantName\": \"string\"\n      },\n      {\n        \"variantId\": 5508,\n        \"sku\": \"string\",\n        \"quantity\": 9606,\n        \"updatedAt\": \"1988-12-07T23:27:39.716Z\",\n        \"price\": \"string\",\n        \"attributes\": {},\n        \"variantName\": \"string\"\n      }\n    ],\n    \"pagination\": {\n      \"offset\": 6011,\n      \"limit\": 6315,\n      \"total\": 8143,\n      \"has_next\": false,\n      \"has_previous\": false,\n      \"current_offset\": 6665,\n      \"showing_from\": 700,\n      \"showing_to\": 16\n    }\n  },\n  \"errors\": {},\n  \"timestamp\": \"2002-10-07T03:05:41.255Z\"\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.request.url.query.each(q => {",
+									"  q.key = encodeURIComponent(q.key);",
+									"  if (q.value !== undefined && q.value !== null) {",
+									"    q.value = encodeURIComponent(q.value);",
+									"  }",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "stock-movements",
+			"item": [
+				{
+					"name": "getList",
+					"item": [
+						{
+							"name": "get List 2",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/stock-movements/getList?offset=0&limit=10&sort_by=id&sort_direction=desc",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock-movements",
+										"getList"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "SKU-123",
+											"description": "fill sku or order id",
+											"disabled": true
+										},
+										{
+											"key": "sort_by",
+											"value": "id"
+										},
+										{
+											"key": "sort_direction",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/stock-movements/getList?offset=0&limit=10&search=SKU-123&sort_by=id&sort_direction=desc",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"stock-movements",
+												"getList"
+											],
+											"query": [
+												{
+													"key": "offset",
+													"value": "0"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "search",
+													"value": "SKU-123",
+													"description": "fill sku or order id"
+												},
+												{
+													"key": "sort_by",
+													"value": "id"
+												},
+												{
+													"key": "sort_direction",
+													"value": "desc"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"data\": {\n    \"data\": [\n      {\n        \"id\": 140,\n        \"variantId\": 4064,\n        \"changeQty\": 6973,\n        \"movementType\": \"ADJUST\",\n        \"referenceId\": \"string\",\n        \"createdAt\": \"1998-08-01T13:34:57.689Z\"\n      },\n      {\n        \"id\": 7819,\n        \"variantId\": 2818,\n        \"changeQty\": 587,\n        \"movementType\": \"OUT\",\n        \"referenceId\": \"string\",\n        \"createdAt\": \"2011-05-23T00:01:16.150Z\"\n      }\n    ],\n    \"pagination\": {\n      \"offset\": 4665,\n      \"limit\": 739,\n      \"total\": 8135,\n      \"has_next\": false,\n      \"has_previous\": false,\n      \"current_offset\": 151,\n      \"showing_from\": 807,\n      \"showing_to\": 7287\n    }\n  },\n  \"errors\": {},\n  \"timestamp\": \"1972-02-21T20:28:46.771Z\"\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.request.url.query.each(q => {",
+									"  q.key = encodeURIComponent(q.key);",
+									"  if (q.value !== undefined && q.value !== null) {",
+									"    q.value = encodeURIComponent(q.value);",
+									"  }",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8012/api"
+		}
+	]
+}
