@@ -1,8 +1,9 @@
 package com.example.warehouse_inventory.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import com.example.warehouse_inventory.entity.StockMovement;
 
-public interface StockMovementRepository extends JpaRepository<StockMovement, Long> {
+public interface StockMovementRepository extends JpaRepository<StockMovement, Long>, JpaSpecificationExecutor<StockMovement> {
 }
