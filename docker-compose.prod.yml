@@ -1,0 +1,21 @@
+services:
+  warehouse-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: warehouse-app
+    ports:
+      - "8012:8012"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:13306/warehouse_inventory?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: sqluser
+      SPRING_DATASOURCE_PASSWORD: 123sqly6
+      SERVER_PORT: 8012
+    networks:
+      - warehouse-net
+    restart: unless-stopped
+
+networks:
+  warehouse-net:
+    external: true

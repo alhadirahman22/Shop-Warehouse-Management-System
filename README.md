@@ -2,6 +2,62 @@
 
 Simple warehouse inventory service built with Spring Boot, focused on SKU-level stock tracking, stock movements, and order flow.
 
+## How to run the application
+
+### Requirements
+
+- Java 21
+- Maven 3.9+
+- Docker & Docker Compose
+- MySQL 8.0+
+
+### Production Mode
+
+```bash
+# Start MySQL
+cd mysql
+docker compose up -d
+
+# Build and start the app (from code directory)
+cd ..
+docker compose -f docker-compose.prod.yml up -d --build
+```
+
+The app will be available at `http://localhost:8012`
+
+### Development Mode
+
+For local development with hot reload:
+
+```bash
+# Start MySQL first
+cd mysql && docker compose up -d
+
+# Start app in dev mode with debugger
+cd ..
+docker compose -f docker-compose.dev.yml up -d --build
+```
+
+### Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `DB_URL` | `jdbc:mysql://database:13306/warehouse_inventory` | Database connection URL |
+| `DB_USERNAME` | `sqluser` | Database user |
+| `DB_PASSWORD` | `123sqly6` | Database password |
+| `SERVER_PORT` | `8012` | Application port |
+
+### Stopping Services
+
+```bash
+# Stop app
+cd code && docker compose -f docker-compose.prod.yml down
+
+# Stop MySQL
+cd ../mysql && docker compose down
+```
+
+
 ## Design Decisions
 This section explains the main technical/architectural choices and why they were made (not just what was used).
 
@@ -67,6 +123,7 @@ To match real business flow and avoid reducing stock before an order is actually
 - Flyway migrations are enabled (`db/migration`); the database user has sufficient privileges to run them.
 - The API is mounted under `/api` (`spring.mvc.servlet.path=/api`).
 - The default Spring profile is `dev`; production expects `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`.
+- Swagger/OpenAPI (springdoc) is enabled only in the `dev` profile (`application-dev.yml`) and disabled by default (`application.yml`). Swagger UI: `/api/swagger-ui/index.html`, OpenAPI JSON: `/api/v3/api-docs`.
 - When running with the `dev` profile, a startup seeder (`DevDataSeeder`) inserts dummy items/variants/stock if the database is empty.
 - Variant `attributes` are sent as a JSON string; invalid JSON or disallowed keys are ignored and stored as `null`.
 - A stock row is auto-created when a variant is created; stock movements require the variant to already exist.
