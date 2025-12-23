@@ -88,8 +88,7 @@ public class ItemService {
             int limit,
             String search,
             String sortBy,
-            String sortDirection
-    ) {
+            String sortDirection) {
         String sortField = (sortBy == null || sortBy.isBlank()) ? "id" : sortBy;
         String safeSort = switch (sortField) {
             case "id", "name", "description", "active", "createdAt", "updatedAt" -> sortField;
@@ -106,8 +105,7 @@ public class ItemService {
             page = itemRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(
                     search,
                     search,
-                    pageable
-            );
+                    pageable);
         }
 
         List<ItemResponse> items = page.getContent().stream()
@@ -126,8 +124,13 @@ public class ItemService {
                 offset > 0,
                 offset,
                 showingFrom,
-                showingTo
-        );
+                showingTo);
         return new PaginatedResponse<>(items, meta);
+    }
+
+    @Transactional(readOnly = true)
+    public ItemResponse findById(Long id) {
+        Item result = itemRepository.findById(id).orElseThrow(() -> new NotFoundException("Item not found"));
+        return ItemMapper.toResponse(result);
     }
 }

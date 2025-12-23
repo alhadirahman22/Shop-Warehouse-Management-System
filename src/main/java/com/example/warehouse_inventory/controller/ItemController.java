@@ -44,8 +44,7 @@ public class ItemController {
             @RequestParam(defaultValue = "10") int limit,
             @RequestParam(required = false) String search,
             @RequestParam(name = "sort_by", defaultValue = "id") String sortBy,
-            @RequestParam(name = "sort_direction", defaultValue = "asc") String sortDirection
-    ) {
+            @RequestParam(name = "sort_direction", defaultValue = "asc") String sortDirection) {
         PaginatedResponse<ItemResponse> result = itemService.getAll(offset, limit, search, sortBy, sortDirection);
         return ResponseEntity.status(ApiStatus.SUCCESS.httpStatus())
                 .body(ApiResponse.success(result));
@@ -74,6 +73,13 @@ public class ItemController {
         ItemResponse updated = itemService.updateActive(id, req.active());
         return ResponseEntity.status(ApiStatus.SUCCESS.httpStatus())
                 .body(ApiResponse.success(updated));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<ItemResponse>> findById(@PathVariable Long id) {
+
+        ItemResponse result = itemService.findById(id);
+        return ResponseEntity.status(ApiStatus.SUCCESS.httpStatus()).body(ApiResponse.success(result));
     }
 
 }
