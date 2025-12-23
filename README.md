@@ -7,9 +7,21 @@ Simple warehouse inventory service built with Spring Boot, focused on SKU-level 
 ### Requirements
 
 - Java 21
+- Spring Boot 3.5.9
 - Maven 3.9+
 - Docker & Docker Compose
 - MySQL 8.0+
+
+### Development Mode
+
+```bash
+# Start MySQL first
+cd mysql && docker compose up -d
+
+# Start app in dev mode with debugger
+cd ..
+docker compose -f docker-compose.dev.yml up -d --build
+```
 
 ### Production Mode
 
@@ -25,16 +37,6 @@ docker compose -f docker-compose.prod.yml up -d --build
 
 The app will be available at `http://localhost:8012`
 
-### Development Mode
-
-```bash
-# Start MySQL first
-cd mysql && docker compose up -d
-
-# Start app in dev mode with debugger
-cd ..
-docker compose -f docker-compose.dev.yml up -d --build
-```
 
 ### Environment Variables
 
