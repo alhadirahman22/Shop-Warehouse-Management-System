@@ -27,8 +27,6 @@ The app will be available at `http://localhost:8012`
 
 ### Development Mode
 
-For local development with hot reload:
-
 ```bash
 # Start MySQL first
 cd mysql && docker compose up -d
@@ -51,10 +49,10 @@ docker compose -f docker-compose.dev.yml up -d --build
 
 ```bash
 # Stop app
-cd code && docker compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.prod.yml down
 
 # Stop MySQL
-cd ../mysql && docker compose down
+cd mysql && docker compose down
 ```
 
 
